@@ -1,6 +1,6 @@
 class Song
 
-attr_accessor:name,  :artist, :genre
+attr_accessor:name, :artist, :genre
 
 @@count = 0
 @@genres = []
@@ -23,10 +23,22 @@ attr_accessor:name,  :artist, :genre
     @@artists.uniq
   end
 
+  def self.artist_count
+    genre_count= {}
+    @@artists.each do |artist|
+      if artist_count[artist]
+        artist_count [artist] += 1
+      else
+        artist_count [artist] = 1
+      end
+    end
+    artist_count
+  end
+  
   def self.genres
     @@genres.unique
   end
-  
+
   def self.genre_count
     genre_count= {}
     @@genres.each do |genre|
@@ -38,4 +50,4 @@ attr_accessor:name,  :artist, :genre
     end
     genre_count
   end
-end 
+end
